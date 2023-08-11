@@ -10,12 +10,16 @@ export class TemperatureHistoryService {
   constructor(private http: HttpClient) {}
   requestTemperature(startDay: Date, endDay: Date) {
     return this.http.get<WeatherDto>(
-      `https://archive-api.open-meteo.com/v1/archive?latitude=53.5507&longitude=9.993&start_date=${startDay.toISOString().split('T')[0]}&end_date=${endDay.toISOString().split('T')[0]}&hourly=temperature_2m`)
+    `https://archive-api.open-meteo.com/v1/archive?latitude=53.5507&longitude=9.993&start_date=${startDay.toISOString().split('T')[0]}&end_date=${endDay.toISOString().split('T')[0]}&hourly=temperature_2m,rain`)
       .pipe(map(this.toTemperatureHistory));
   }
 
   toTemperatureHistory(weatherDto: WeatherDto): TemperatureHistory {
-    return new TemperatureHistory(weatherDto.hourly.time, weatherDto.hourly.temperature_2m)
+    return new TemperatureHistory(
+      weatherDto.hourly.time,
+      weatherDto.hourly.temperature_2m,
+      weatherDto.hourly.rain
+    )
   }
 }
 
@@ -34,9 +38,11 @@ export interface WeatherDto {
 export interface HourlyUnits {
   time: string;
   temperature_2m: string;
+  rain: string;
 }
 
 export interface Hourly {
   time: string[];
   temperature_2m: string[];
+  rain: string[];
 }

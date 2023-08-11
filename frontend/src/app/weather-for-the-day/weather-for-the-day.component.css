@@ -8,4 +8,9 @@
 
 #weather-code {
   color: #868B94;
+  margin-left: 5px;
+}
+
+#weather-picture {
+  height: 70px;
 }

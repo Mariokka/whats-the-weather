@@ -3,18 +3,21 @@
   <div class="row">
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures[560]"
-      [day]="temperatureHistory!.days[560]"
+      [temperature]="temperatureHistory!.temperatures.slice(552, 576)"
+      [day]="temperatureHistory!.days.slice(552, 576)"
+      [rain]="temperatureHistory!.rain.slice(552, 576)"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures[590]"
-      [day]="temperatureHistory!.days[590]"
+      [temperature]="temperatureHistory!.temperatures.slice(576, 600)"
+      [day]="temperatureHistory!.days.slice(576, 600)"
+      [rain]="temperatureHistory!.rain.slice(576, 600)"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures[620]"
-      [day]="temperatureHistory!.days[620]"
+      [temperature]="temperatureHistory!.temperatures.slice(600, 624)"
+      [day]="temperatureHistory!.days.slice(600, 624)"
+      [rain]="temperatureHistory!.rain.slice(600, 624)"
     ></app-weather-for-the-day>
   </div>
 </div>
