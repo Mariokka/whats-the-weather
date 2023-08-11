@@ -1,9 +1,21 @@
 <app-header></app-header>
 <div class="container">
   <div class="row">
-    <app-weather-for-the-day class="col-lg-4 col-md-6 col-sm-6"></app-weather-for-the-day>
-    <app-weather-for-the-day class="col-lg-4 col-md-6 col-sm-6"></app-weather-for-the-day>
-    <app-weather-for-the-day class="col-lg-4 col-md-6 col-sm-6"></app-weather-for-the-day>
+    <app-weather-for-the-day
+      class="col-lg-4 col-md-6 col-sm-6"
+      [temperature]="temperatureHistory!.temperatures[560]"
+      [day]="temperatureHistory!.days[560]"
+    ></app-weather-for-the-day>
+    <app-weather-for-the-day
+      class="col-lg-4 col-md-6 col-sm-6"
+      [temperature]="temperatureHistory!.temperatures[590]"
+      [day]="temperatureHistory!.days[590]"
+    ></app-weather-for-the-day>
+    <app-weather-for-the-day
+      class="col-lg-4 col-md-6 col-sm-6"
+      [temperature]="temperatureHistory!.temperatures[620]"
+      [day]="temperatureHistory!.days[620]"
+    ></app-weather-for-the-day>
   </div>
 </div>
 

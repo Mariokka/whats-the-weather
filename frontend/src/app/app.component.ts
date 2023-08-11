@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {TemperatureHistory} from "./model/TemperatureHistory";
+import {TemperatureHistoryService, WeatherDto} from "./service/TemperatureHistoryService";
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,15 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Weather in Hamburg';
+  temperatureHistory: TemperatureHistory | undefined;
+  startDate: Date = new Date("2023-07-11T00:00");
+  endDate: Date = new Date("2023-08-11T00:00");
 
-  constructor() {
+  constructor(public service: TemperatureHistoryService) {
+    service.requestTemperature(this.startDate!, this.endDate!).subscribe((value) => {
+      this.temperatureHistory = value;
+    });
   }
 
+  protected readonly TemperatureHistory = TemperatureHistory;
 }
