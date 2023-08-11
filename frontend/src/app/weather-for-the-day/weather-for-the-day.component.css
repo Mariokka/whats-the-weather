@@ -1,0 +1,11 @@
+.card {
+  border-radius: 35px;
+}
+
+#temperature {
+  color: #1C2331;
+}
+
+#weather-code {
+  color: #868B94;
+}
