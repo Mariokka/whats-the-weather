@@ -16,15 +16,18 @@ export class WeatherForTheDayComponent {
   rain: string[] | undefined;
 
   temperatureAsInt(): number {
-    return parseInt(this.temperature![12]);
+    if (this.temperature)
+      return parseInt(this.temperature[12]);
+    return 19;
   }
 
   dayWithoutTime(): string {
-    return this.day![12].split('T')[0];
+    if (this.day)
+      return this.day[12].split('T')[0];
+    return "2023-08-14"
   }
 
   pickRightPicture(): number {
-
     let average = this.getAverageAmountOfRain();
     if (average > 0.2)
       return 1;
@@ -39,7 +42,9 @@ export class WeatherForTheDayComponent {
   }
 
   getAverageAmountOfRain(): number {
-    return this.rain!.reduce((accumulator, currentValue) =>
-      accumulator + parseFloat(currentValue), 0) / this.rain!.length;
+    if (this.rain)
+      return this.rain.reduce((accumulator, currentValue) =>
+      accumulator + parseFloat(currentValue), 0) / this.rain.length;
+    return 0.2;
   }
 }

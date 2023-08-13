@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {TemperatureHistory} from "./model/TemperatureHistory";
-import {TemperatureHistoryService, WeatherDto} from "./service/TemperatureHistoryService";
+import {TemperatureHistory} from "./model/temperature-history";
+import {TemperatureHistoryService, WeatherDto} from "./service/temperature-history.service";
 
 @Component({
   selector: 'app-root',
@@ -17,6 +17,4 @@ export class AppComponent {
       this.temperatureHistory = value;
     });
   }
-
-  protected readonly TemperatureHistory = TemperatureHistory;
 }

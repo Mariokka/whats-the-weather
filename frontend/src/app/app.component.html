@@ -1,6 +1,10 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row">
+    <form id="search-form" class="form-inline">
+      <input id="input-field" class="form-control " type="search" placeholder="2023-08-01" aria-label="Search">
+      <button id="search-button" class="btn btn-light btn-outline-secondary" type="submit">Select</button>
+    </form>
+  <div id="all-cards" class="row">
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
       [temperature]="temperatureHistory!.temperatures.slice(552, 576)"

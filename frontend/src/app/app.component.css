@@ -1,0 +1,16 @@
+#search-form {
+  width: max-content;
+  height: 40px;
+  display: flex;
+}
+
+#search-button {
+  width: 70px;
+  margin-left: 3px;
+  padding: 0;
+}
+
+#input-field {
+  width: 150px;
+}
+

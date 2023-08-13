@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {TemperatureHistory} from "../model/TemperatureHistory";
+import {TemperatureHistory} from "../model/temperature-history";
 import {map} from "rxjs";
 
 @Injectable({
