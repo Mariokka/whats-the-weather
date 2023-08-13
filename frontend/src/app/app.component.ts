@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TemperatureHistory} from "./model/temperature-history";
 import {TemperatureHistoryService, WeatherDto} from "./service/temperature-history.service";
 
@@ -9,9 +9,13 @@ import {TemperatureHistoryService, WeatherDto} from "./service/temperature-histo
 })
 export class AppComponent {
   temperatureHistory: TemperatureHistory | undefined;
-  startDate: Date = new Date("2023-07-11T00:00");
-  endDate: Date = new Date("2023-08-11T00:00");
-
+  startDate = "2023-07-01";
+  endDate = "2023-08-01";
+  updateStartDate() {
+    this.service.requestTemperature(this.startDate!, this.endDate!).subscribe((value) => {
+      this.temperatureHistory = value;
+    });
+  }
   constructor(public service: TemperatureHistoryService) {
     service.requestTemperature(this.startDate!, this.endDate!).subscribe((value) => {
       this.temperatureHistory = value;

@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { WeatherForTheDayComponent } from './weather-for-the-day/weather-for-the-day.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,12 +16,13 @@ import { WeatherForTheDayComponent } from './weather-for-the-day/weather-for-the
     HeaderComponent,
     WeatherForTheDayComponent
   ],
-  imports: [
-    BrowserModule,
-    NgbModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        NgbModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

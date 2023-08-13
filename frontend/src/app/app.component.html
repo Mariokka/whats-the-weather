@@ -1,27 +1,30 @@
 <app-header></app-header>
 <div class="container">
-    <form id="search-form" class="form-inline">
-      <input id="input-field" class="form-control " type="search" placeholder="2023-08-01" aria-label="Search">
-      <button id="search-button" class="btn btn-light btn-outline-secondary" type="submit">Select</button>
-    </form>
+  <form id="search-form" class="form-inline">
+    <input id="input-field" class="form-control " type="search" placeholder="2023-07-01" aria-label="Search"
+           [(ngModel)]="startDate" name="startDate">
+    <button id="search-button" class="btn btn-light btn-outline-secondary" type="submit" (click)="updateStartDate()">
+      Select
+    </button>
+  </form>
   <div id="all-cards" class="row">
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(552, 576)"
-      [day]="temperatureHistory!.days.slice(552, 576)"
-      [rain]="temperatureHistory!.rain.slice(552, 576)"
+      [temperature]="temperatureHistory!.temperatures.slice(0, 23)"
+      [day]="temperatureHistory!.days.slice(0, 23)"
+      [rain]="temperatureHistory!.rain.slice(0, 23)"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(576, 600)"
-      [day]="temperatureHistory!.days.slice(576, 600)"
-      [rain]="temperatureHistory!.rain.slice(576, 600)"
+      [temperature]="temperatureHistory!.temperatures.slice(24, 47)"
+      [day]="temperatureHistory!.days.slice(24, 47)"
+      [rain]="temperatureHistory!.rain.slice(24, 47)"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(600, 624)"
-      [day]="temperatureHistory!.days.slice(600, 624)"
-      [rain]="temperatureHistory!.rain.slice(600, 624)"
+      [temperature]="temperatureHistory!.temperatures.slice(48, 71)"
+      [day]="temperatureHistory!.days.slice(48, 71)"
+      [rain]="temperatureHistory!.rain.slice(48, 71)"
     ></app-weather-for-the-day>
   </div>
 </div>

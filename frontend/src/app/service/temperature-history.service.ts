@@ -8,9 +8,9 @@ import {map} from "rxjs";
 })
 export class TemperatureHistoryService {
   constructor(private http: HttpClient) {}
-  requestTemperature(startDay: Date, endDay: Date) {
+  requestTemperature(startDay: string, endDay: string) {
     return this.http.get<WeatherDto>(
-    `https://archive-api.open-meteo.com/v1/archive?latitude=53.5507&longitude=9.993&start_date=${startDay.toISOString().split('T')[0]}&end_date=${endDay.toISOString().split('T')[0]}&hourly=temperature_2m,rain`)
+    `https://archive-api.open-meteo.com/v1/archive?latitude=53.5507&longitude=9.993&start_date=${startDay}&end_date=${endDay}&hourly=temperature_2m,rain`)
       .pipe(map(this.toTemperatureHistory));
   }
 
