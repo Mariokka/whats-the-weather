@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { WeatherForTheDayComponent } from './weather-for-the-day/weather-for-the-day.component';
 import {FormsModule} from "@angular/forms";
 
+import { CarouselModule } from 'primeng/carousel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import {FormsModule} from "@angular/forms";
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        CarouselModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
