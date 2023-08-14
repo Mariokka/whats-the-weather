@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {WeatherForTheDay} from "../model/weather-for-the-day";
 
 @Component({
   selector: 'app-weather-for-the-day',
@@ -15,15 +16,18 @@ export class WeatherForTheDayComponent {
   @Input()
   rain: string[] | undefined;
 
+  @Input()
+  weatherDay: WeatherForTheDay | undefined
+
   temperatureAsInt(): number {
-    if (this.temperature)
-      return parseInt(this.temperature[12]);
+    if (this.weatherDay)
+      return parseInt(this.weatherDay.temperatures[12]);
     return 19;
   }
 
   dayWithoutTime(): string {
-    if (this.day)
-      return this.day[12].split('T')[0];
+    if (this.weatherDay)
+      return this.weatherDay.days[12].split('T')[0];
     return "2023-08-14"
   }
 
@@ -42,9 +46,9 @@ export class WeatherForTheDayComponent {
   }
 
   getAverageAmountOfRain(): number {
-    if (this.rain)
-      return this.rain.reduce((accumulator, currentValue) =>
-      accumulator + parseFloat(currentValue), 0) / this.rain.length;
+    if (this.weatherDay)
+      return this.weatherDay.rain.reduce((accumulator, currentValue) =>
+      accumulator + parseFloat(currentValue), 0) / this.weatherDay.rain.length;
     return 0.2;
   }
 }
