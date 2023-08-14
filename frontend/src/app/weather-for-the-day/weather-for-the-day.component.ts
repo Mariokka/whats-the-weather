@@ -33,14 +33,14 @@ export class WeatherForTheDayComponent {
 
   pickRightPicture(): number {
     let average = this.getAverageAmountOfRain();
-    if (average > 0.2)
+    if (average > 0.15)
       return 1;
     return 3;
   }
 
   weatherStatus(): string {
     let average = this.getAverageAmountOfRain();
-    if (average > 0.2)
+    if (average > 0.15)
       return "Rainy";
     return "Clear";
   }
