@@ -30,12 +30,7 @@ export class AppComponent {
     if (this.temperatureHistory) {
       this.days.length = 0;
       for (let i = 0; i < this.temperatureHistory.days.length; i += 24) {
-        let day: WeatherForTheDay =
-          {
-            days: this.temperatureHistory!.days.slice(i, i + 24),
-            temperatures: this.temperatureHistory!.temperatures.slice(i, i + 24),
-            rain: this.temperatureHistory!.rain.slice(i, i + 24)
-          };
+        const day: WeatherForTheDay = new WeatherForTheDay(this.temperatureHistory!.days.slice(i, i + 24), this.temperatureHistory!.temperatures.slice(i, i + 24), this.temperatureHistory!.rain.slice(i, i + 24))
         this.days.push(day);
       }
     }

@@ -7,8 +7,7 @@
       </div>
       <div class="d-flex align-items-center mt-5 mb-4 ">
         <div id="weather-picture" class="flex-grow-1">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu{{pickRightPicture()}}.webp"
-               width="100px">
+          <img [src]="picture()" width="100px">
         </div>
         <h6 id="temperature" class="display-4 mb-0 font-weight-bold"> {{temperatureAsInt()}}° </h6>
         <span id="weather-code" class="small">{{weatherStatus()}}</span>

@@ -1,5 +1,14 @@
 import {Component, Input} from '@angular/core';
-import {WeatherForTheDay} from "../model/weather-for-the-day";
+import {DayClassification, WeatherForTheDay} from "../model/weather-for-the-day";
+
+const rainyImage = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp';
+
+const clearImage = 'https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp';
+
+const amountOfRainThatIsConsideredRainy = 0.15;
+
+const noImage = '';
+const unknownStatus = 'unknown';
 
 @Component({
   selector: 'app-weather-for-the-day',
@@ -8,21 +17,12 @@ import {WeatherForTheDay} from "../model/weather-for-the-day";
 })
 export class WeatherForTheDayComponent {
   @Input()
-  temperature: string[] | undefined;
-
-  @Input()
-  day: string[] | undefined;
-
-  @Input()
-  rain: string[] | undefined;
-
-  @Input()
   weatherDay: WeatherForTheDay | undefined
 
   temperatureAsInt(): number {
     if (this.weatherDay)
       return parseInt(this.weatherDay.temperatures[12]);
-    return 19;
+    return -100;
   }
 
   dayWithoutTime(): string {
@@ -31,24 +31,29 @@ export class WeatherForTheDayComponent {
     return "2023-08-14"
   }
 
-  pickRightPicture(): number {
-    let average = this.getAverageAmountOfRain();
-    if (average > 0.15)
-      return 1;
-    return 3;
+  picture(): string {
+    if (this.weatherDay === undefined) {
+      return noImage;
+    }
+
+    const pictures = new Map<DayClassification, string>();
+    pictures.set(DayClassification.RAINY, rainyImage);
+    pictures.set(DayClassification.CLEAR, clearImage);
+
+    return pictures.get(this.weatherDay.classification()) || noImage;
   }
+
 
   weatherStatus(): string {
-    let average = this.getAverageAmountOfRain();
-    if (average > 0.15)
-      return "Rainy";
-    return "Clear";
+    if (this.weatherDay === undefined) {
+      return unknownStatus;
+    }
+
+    const states = new Map<DayClassification, string>();
+    states.set(DayClassification.RAINY, "Rainy");
+    states.set(DayClassification.CLEAR, "Clear");
+
+    return states.get(this.weatherDay.classification()) || unknownStatus;
   }
 
-  getAverageAmountOfRain(): number {
-    if (this.weatherDay)
-      return this.weatherDay.rain.reduce((accumulator, currentValue) =>
-      accumulator + parseFloat(currentValue), 0) / this.weatherDay.rain.length;
-    return 0.2;
-  }
 }
