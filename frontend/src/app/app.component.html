@@ -10,21 +10,21 @@
   <div id="all-cards" class="row">
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(0, 23)"
-      [day]="temperatureHistory!.days.slice(0, 23)"
-      [rain]="temperatureHistory!.rain.slice(0, 23)"
+      [temperature]="days[0].temperatures"
+      [day]="days[0].days"
+      [rain]="days[0].rain"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(24, 47)"
-      [day]="temperatureHistory!.days.slice(24, 47)"
-      [rain]="temperatureHistory!.rain.slice(24, 47)"
+      [temperature]="days[1].temperatures"
+      [day]="days[1].days"
+      [rain]="days[1].rain"
     ></app-weather-for-the-day>
     <app-weather-for-the-day
       class="col-lg-4 col-md-6 col-sm-6"
-      [temperature]="temperatureHistory!.temperatures.slice(48, 71)"
-      [day]="temperatureHistory!.days.slice(48, 71)"
-      [rain]="temperatureHistory!.rain.slice(48, 71)"
+      [temperature]="days[2].temperatures"
+      [day]="days[2].days"
+      [rain]="days[2].rain"
     ></app-weather-for-the-day>
   </div>
 </div>
